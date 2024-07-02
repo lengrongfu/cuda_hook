@@ -1,0 +1,8 @@
+/c-workspace/cuda_hook/cmake-build-debug/CMakeFiles/cuda_hook.dir
+/c-workspace/cuda_hook/cmake-build-debug/CMakeFiles/cuda_hook_static.dir
+/c-workspace/cuda_hook/cmake-build-debug/CMakeFiles/edit_cache.dir
+/c-workspace/cuda_hook/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/c-workspace/cuda_hook/cmake-build-debug/CMakeFiles/list_install_components.dir
+/c-workspace/cuda_hook/cmake-build-debug/CMakeFiles/install.dir
+/c-workspace/cuda_hook/cmake-build-debug/CMakeFiles/install/local.dir
+/c-workspace/cuda_hook/cmake-build-debug/CMakeFiles/install/strip.dir

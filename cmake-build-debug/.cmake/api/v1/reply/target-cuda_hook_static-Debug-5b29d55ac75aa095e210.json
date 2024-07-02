@@ -1,0 +1,307 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "libcuda_hook.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"install",
+			"add_compile_options",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 67,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 71,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 28,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 38,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-std=c++11  -O0 -g2 -ggdb -DHOOK_BUILD_DEBUG -fPIC -fvisibility=hidden -fdiagnostics-color=always"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Werror"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wswitch-default"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wfloat-equal"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wshadow"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wcast-qual"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/common"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/cuda"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/nvml"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/cudart"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/cudnn"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/cublas"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/cublasLt"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/cufft"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/nvtx"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/nvrtc"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/curand"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/cusparse"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/cusolver"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/nvjpeg"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/c-workspace/cuda_hook/src/nvblas"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13
+			]
+		}
+	],
+	"id" : "cuda_hook_static::@6890427a1f51a3e7e1df",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 2,
+				"path" : "lib64"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "/usr/local"
+		}
+	},
+	"name" : "cuda_hook_static",
+	"nameOnDisk" : "libcuda_hook.a",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/cublas/cublas_hook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/cublasLt/cublasLt_hook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/cuda/cuda_hook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/cudart/cudart_hook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/cudnn/cudnn_hook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/cufft/cufft_hook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/curand/curand_hook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/cusolver/cusolver_hook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/cusparse/cusparse_hook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/nvblas/nvblas_hook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/nvjpeg/nvjpeg_hook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/nvml/nvml_hook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/nvrtc/nvrtc_hook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/nvtx/nvtx_hook.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

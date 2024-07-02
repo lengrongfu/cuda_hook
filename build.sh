@@ -16,8 +16,9 @@ CUDA_ARCHITECTURE=86 # a: (Tesla P100: 60, GTX1080Ti: 61, Tesla V100: 70, RTX208
 BUILD_TYPE=Debug # t: (Debug, Release)
 WITH_SAMPLE=ON # s: (ON, OFF)
 VERBOSE_MAKEFILE=OFF # b: (ON, OFF)
+CUDA_VERSION=11 #c:(11,12)
 
-while getopts ":a:t:s:b:" opt
+while getopts ":a:t:s:b:c:" opt
 do
     case $opt in
         a)
@@ -36,6 +37,10 @@ do
         VERBOSE_MAKEFILE=$OPTARG
         echo "VERBOSE_MAKEFILE: $VERBOSE_MAKEFILE"
         ;;
+        c)
+        CUDA_VERSION=$OPTARG
+        echo "CUDA_VERSION: $CUDA_VERSION"
+        ;;
         ?)
         echo "invalid param: $OPTARG"
         exit 1
@@ -47,78 +52,155 @@ echo_cmd() {
     echo $1
     $1
 }
+if [ "$CUDA_VERSION" -eq 11 ]; then
+    echo "CUDA_VERSION is either 11"
+    echo "========== build cuda_hook =========="
 
-echo "========== build cuda_hook =========="
+    echo_cmd "rm -rf build output"
+    echo_cmd "mkdir build"
 
-echo_cmd "rm -rf build output"
-echo_cmd "mkdir build"
+    echo_cmd "cd build"
+    echo_cmd "cmake -DCMAKE_CUDA_ARCHITECTURES=$CUDA_ARCHITECTURE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DHOOK_WITH_SAMPLE=$WITH_SAMPLE -DHOOK_VERBOSE_MAKEFILE=$VERBOSE_MAKEFILE -DCMAKE_INSTALL_PREFIX=$WORK_PATH/output -DCMAKE_SKIP_RPATH=ON .."
+    echo_cmd "make -j$(nproc --ignore=2)"
+    echo_cmd "make install"
 
-echo_cmd "cd build"
-echo_cmd "cmake -DCMAKE_CUDA_ARCHITECTURES=$CUDA_ARCHITECTURE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DHOOK_WITH_SAMPLE=$WITH_SAMPLE -DHOOK_VERBOSE_MAKEFILE=$VERBOSE_MAKEFILE -DCMAKE_INSTALL_PREFIX=$WORK_PATH/output -DCMAKE_SKIP_RPATH=ON .."
-echo_cmd "make -j$(nproc --ignore=2)"
-echo_cmd "make install"
+    echo "========== create soft link =========="
 
-echo "========== create soft link =========="
+    # cuda
+    echo_cmd "ln -s libcuda_hook.so libcuda.so.1"
+    echo_cmd "ln -s libcuda.so.1 libcuda.so"
 
-# cuda
-echo_cmd "ln -s libcuda_hook.so libcuda.so.1"
-echo_cmd "ln -s libcuda.so.1 libcuda.so"
+    # nvml
+    echo_cmd "ln -s libcuda_hook.so libnvidia-ml.so.1"
+    echo_cmd "ln -s libnvidia-ml.so.1 libnvidia-ml.so"
 
-# nvml
-echo_cmd "ln -s libcuda_hook.so libnvidia-ml.so.1"
-echo_cmd "ln -s libnvidia-ml.so.1 libnvidia-ml.so"
+    # cudart
+    echo_cmd "ln -s libcuda_hook.so libcudart.so.11.0"
+    echo_cmd "ln -s libcudart.so.11.0 libcudart.so"
 
-# cudart
-echo_cmd "ln -s libcuda_hook.so libcudart.so.11.0"
-echo_cmd "ln -s libcudart.so.11.0 libcudart.so"
+    # cudnn
+    echo_cmd "ln -s libcuda_hook.so libcudnn.so.7"
+    echo_cmd "ln -s libcudnn.so.7 libcudnn.so"
 
-# cudnn
-echo_cmd "ln -s libcuda_hook.so libcudnn.so.7"
-echo_cmd "ln -s libcudnn.so.7 libcudnn.so"
+    # cublas
+    echo_cmd "ln -s libcuda_hook.so libcublas.so.11"
+    echo_cmd "ln -s libcublas.so.11 libcublas.so"
 
-# cublas
-echo_cmd "ln -s libcuda_hook.so libcublas.so.11"
-echo_cmd "ln -s libcublas.so.11 libcublas.so"
+    # cublasLt
+    echo_cmd "ln -s libcuda_hook.so libcublasLt.so.11"
+    echo_cmd "ln -s libcublasLt.so.11 libcublasLt.so"
 
-# cublasLt
-echo_cmd "ln -s libcuda_hook.so libcublasLt.so.11"
-echo_cmd "ln -s libcublasLt.so.11 libcublasLt.so"
+    # cufft
+    echo_cmd "ln -s libcuda_hook.so libcufft.so.10"
+    echo_cmd "ln -s libcufft.so.10 libcufft.so"
 
-# cufft
-echo_cmd "ln -s libcuda_hook.so libcufft.so.10"
-echo_cmd "ln -s libcufft.so.10 libcufft.so"
+    # nvtx
+    echo_cmd "ln -s libcuda_hook.so libnvToolsExt.so.1"
+    echo_cmd "ln -s libnvToolsExt.so.1 libnvToolsExt.so"
 
-# nvtx
-echo_cmd "ln -s libcuda_hook.so libnvToolsExt.so.1"
-echo_cmd "ln -s libnvToolsExt.so.1 libnvToolsExt.so"
+    # nvrtc
+    echo_cmd "ln -s libcuda_hook.so libnvrtc.so.11.2"
+    echo_cmd "ln -s libnvrtc.so.11.2 libnvrtc.so"
 
-# nvrtc
-echo_cmd "ln -s libcuda_hook.so libnvrtc.so.11.2"
-echo_cmd "ln -s libnvrtc.so.11.2 libnvrtc.so"
+    # curand
+    echo_cmd "ln -s libcuda_hook.so libcurand.so.10"
+    echo_cmd "ln -s libcurand.so.10 libcurand.so"
 
-# curand
-echo_cmd "ln -s libcuda_hook.so libcurand.so.10"
-echo_cmd "ln -s libcurand.so.10 libcurand.so"
+    # cusparse
+    echo_cmd "ln -s libcuda_hook.so libcusparse.so.11"
+    echo_cmd "ln -s libcusparse.so.11 libcusparse.so"
 
-# cusparse
-echo_cmd "ln -s libcuda_hook.so libcusparse.so.11"
-echo_cmd "ln -s libcusparse.so.11 libcusparse.so"
+    # cusolver
+    echo_cmd "ln -s libcuda_hook.so libcusolver.so.11"
+    echo_cmd "ln -s libcusolver.so.11 libcusolver.so"
 
-# cusolver
-echo_cmd "ln -s libcuda_hook.so libcusolver.so.11"
-echo_cmd "ln -s libcusolver.so.11 libcusolver.so"
+    # nvjpeg
+    echo_cmd "ln -s libcuda_hook.so libnvjpeg.so.11"
+    echo_cmd "ln -s libnvjpeg.so.11 libnvjpeg.so"
 
-# nvjpeg
-echo_cmd "ln -s libcuda_hook.so libnvjpeg.so.11"
-echo_cmd "ln -s libnvjpeg.so.11 libnvjpeg.so"
+    # nvblas
+    echo_cmd "ln -s libcuda_hook.so libnvblas.so.11"
+    echo_cmd "ln -s libnvblas.so.11 libnvblas.so"
 
-# nvblas
-echo_cmd "ln -s libcuda_hook.so libnvblas.so.11"
-echo_cmd "ln -s libnvblas.so.11 libnvblas.so"
+    echo_cmd "cp -d *.so *.so.* $WORK_PATH/output/lib64"
 
-echo_cmd "cp -d *.so *.so.* $WORK_PATH/output/lib64"
+    echo "========== build cuda$CUDA_VERSION info =========="
+elif [ "$CUDA_VERSION" -eq 12 ]; then
+    echo "CUDA_VERSION is either 12"
+    echo "========== build cuda_hook =========="
 
-echo "========== build info =========="
+    echo_cmd "rm -rf build output"
+    echo_cmd "mkdir build"
+
+    echo_cmd "cd build"
+    echo_cmd "cmake -DCMAKE_CUDA_ARCHITECTURES=$CUDA_ARCHITECTURE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DHOOK_WITH_SAMPLE=$WITH_SAMPLE -DHOOK_VERBOSE_MAKEFILE=$VERBOSE_MAKEFILE -DCMAKE_INSTALL_PREFIX=$WORK_PATH/output -DCMAKE_SKIP_RPATH=ON .."
+    echo_cmd "make -j$(nproc --ignore=2)"
+    echo_cmd "make install"
+
+    echo "========== create soft link =========="
+
+    # cuda
+    echo_cmd "ln -s libcuda_hook.so libcuda.so.1"
+    echo_cmd "ln -s libcuda.so.1 libcuda.so"
+
+    # nvml
+    echo_cmd "ln -s libcuda_hook.so libnvidia-ml.so.1"
+    echo_cmd "ln -s libnvidia-ml.so.1 libnvidia-ml.so"
+
+    # cudart
+    echo_cmd "ln -s libcuda_hook.so libcudart.so.12.0"
+    echo_cmd "ln -s libcudart.so.12.0 libcudart.so"
+
+    # cudnn
+    echo_cmd "ln -s libcuda_hook.so libcudnn.so.8"
+    echo_cmd "ln -s libcudnn.so.8 libcudnn.so"
+
+    # cublas
+    echo_cmd "ln -s libcuda_hook.so libcublas.so.12"
+    echo_cmd "ln -s libcublas.so.12 libcublas.so"
+
+    # cublasLt
+    echo_cmd "ln -s libcuda_hook.so libcublasLt.so.12"
+    echo_cmd "ln -s libcublasLt.so.12 libcublasLt.so"
+
+    # cufft
+    echo_cmd "ln -s libcuda_hook.so libcufft.so.10"
+    echo_cmd "ln -s libcufft.so.10 libcufft.so"
+
+    # nvtx
+    echo_cmd "ln -s libcuda_hook.so libnvToolsExt.so.1"
+    echo_cmd "ln -s libnvToolsExt.so.1 libnvToolsExt.so"
+
+    # nvrtc
+    echo_cmd "ln -s libcuda_hook.so libnvrtc.so.12.2"
+    echo_cmd "ln -s libnvrtc.so.12.2 libnvrtc.so"
+
+    # curand
+    echo_cmd "ln -s libcuda_hook.so libcurand.so.10"
+    echo_cmd "ln -s libcurand.so.10 libcurand.so"
+
+    # cusparse
+    echo_cmd "ln -s libcuda_hook.so libcusparse.so.12"
+    echo_cmd "ln -s libcusparse.so.12 libcusparse.so"
+
+    # cusolver
+    echo_cmd "ln -s libcuda_hook.so libcusolver.so.12"
+    echo_cmd "ln -s libcusolver.so.12 libcusolver.so"
+
+    # nvjpeg
+    echo_cmd "ln -s libcuda_hook.so libnvjpeg.so.12"
+    echo_cmd "ln -s libnvjpeg.so.12 libnvjpeg.so"
+
+    # nvblas
+    echo_cmd "ln -s libcuda_hook.so libnvblas.so.12"
+    echo_cmd "ln -s libnvblas.so.12 libnvblas.so"
+
+    echo_cmd "cp -d *.so *.so.* $WORK_PATH/output/lib64"
+
+    echo "========== build cuda$CUDA_VERSION info =========="
+else
+    echo "CUDA_VERSION is not a valid number" $CUDA_VERSION
+fi
 
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 COMMIT=`git rev-parse HEAD`

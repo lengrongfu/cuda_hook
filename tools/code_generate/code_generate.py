@@ -46,9 +46,10 @@ HOOK_C_API HOOK_DECL_EXPORT $ret$ $func_name$($func_param$) {
 """
 
     def parsę_header(self):
+        print("file: ",self.file)
         self.header = CppHeader(self.file)
         print(
-            "{} total func num: {}".format(
+            "{} total func num: {}\t".format(
                 self.type, len(
                     self.header.functions)))
 

@@ -1,0 +1,108 @@
+{
+	"cmake" : 
+	{
+		"generator" : 
+		{
+			"multiConfig" : false,
+			"name" : "Ninja"
+		},
+		"paths" : 
+		{
+			"cmake" : "/root/.cache/JetBrains/RemoteDev/dist/ec2a9028ea785_CLion-242.16677.29-aarch64/bin/cmake/linux/aarch64/bin/cmake",
+			"cpack" : "/root/.cache/JetBrains/RemoteDev/dist/ec2a9028ea785_CLion-242.16677.29-aarch64/bin/cmake/linux/aarch64/bin/cpack",
+			"ctest" : "/root/.cache/JetBrains/RemoteDev/dist/ec2a9028ea785_CLion-242.16677.29-aarch64/bin/cmake/linux/aarch64/bin/ctest",
+			"root" : "/root/.cache/JetBrains/RemoteDev/dist/ec2a9028ea785_CLion-242.16677.29-aarch64/bin/cmake/linux/aarch64/share/cmake-3.29"
+		},
+		"version" : 
+		{
+			"isDirty" : false,
+			"major" : 3,
+			"minor" : 29,
+			"patch" : 3,
+			"string" : "3.29.3",
+			"suffix" : ""
+		}
+	},
+	"objects" : 
+	[
+		{
+			"jsonFile" : "codemodel-v2-43acbec875a005e07bac.json",
+			"kind" : "codemodel",
+			"version" : 
+			{
+				"major" : 2,
+				"minor" : 7
+			}
+		},
+		{
+			"jsonFile" : "cache-v2-e8f90b484dda4319813d.json",
+			"kind" : "cache",
+			"version" : 
+			{
+				"major" : 2,
+				"minor" : 0
+			}
+		},
+		{
+			"jsonFile" : "cmakeFiles-v1-776d20d26f054b4475d0.json",
+			"kind" : "cmakeFiles",
+			"version" : 
+			{
+				"major" : 1,
+				"minor" : 0
+			}
+		},
+		{
+			"jsonFile" : "toolchains-v1-049b2bd38236c646954d.json",
+			"kind" : "toolchains",
+			"version" : 
+			{
+				"major" : 1,
+				"minor" : 0
+			}
+		}
+	],
+	"reply" : 
+	{
+		"cache-v2" : 
+		{
+			"jsonFile" : "cache-v2-e8f90b484dda4319813d.json",
+			"kind" : "cache",
+			"version" : 
+			{
+				"major" : 2,
+				"minor" : 0
+			}
+		},
+		"cmakeFiles-v1" : 
+		{
+			"jsonFile" : "cmakeFiles-v1-776d20d26f054b4475d0.json",
+			"kind" : "cmakeFiles",
+			"version" : 
+			{
+				"major" : 1,
+				"minor" : 0
+			}
+		},
+		"codemodel-v2" : 
+		{
+			"jsonFile" : "codemodel-v2-43acbec875a005e07bac.json",
+			"kind" : "codemodel",
+			"version" : 
+			{
+				"major" : 2,
+				"minor" : 7
+			}
+		},
+		"toolchains-v1" : 
+		{
+			"jsonFile" : "toolchains-v1-049b2bd38236c646954d.json",
+			"kind" : "toolchains",
+			"version" : 
+			{
+				"major" : 1,
+				"minor" : 0
+			}
+		}
+	}
+}
