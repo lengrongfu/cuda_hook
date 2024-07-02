@@ -4,6 +4,9 @@
 //
 // Description: auto generate 378 apis, manually add 33 apis and delete 1 api
 
+#include <iomanip>
+#include <iostream>
+
 #include "cuda_subset.h"
 #include "hook.h"
 #include "macro_common.h"
@@ -3322,6 +3325,13 @@ HOOK_C_API HOOK_DECL_EXPORT CUresult cuGraphicsUnmapResources(unsigned int count
 
 HOOK_C_API HOOK_DECL_EXPORT CUresult cuGetExportTable(const void **ppExportTable, const CUuuid *pExportTableId) {
     HOOK_TRACE_PROFILE("cuGetExportTable");
+    HLOG("CUuuid is %s",pExportTableId->bytes);
+    std::cout << "CUuuid: ";
+    for (int i = 0; i < 16; ++i) {
+        // 以两位十六进制格式打印每个字节
+        std::cout << std::hex << std::setw(2) << std::setfill('0') << (0xff & static_cast<int>(pExportTableId->bytes[i])) << " ";
+    }
+    std::cout << std::dec << std::endl;
     using func_ptr = CUresult (*)(const void **, const CUuuid *);
     static auto func_entry = reinterpret_cast<func_ptr>(HOOK_CUDA_SYMBOL("cuGetExportTable"));
     HOOK_CHECK(func_entry);

@@ -83,7 +83,7 @@ if (HOOK_WITH_SAMPLE)
         set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -gencode arch=compute_${CMAKE_CUDA_ARCHITECTURES},code=sm_${CMAKE_CUDA_ARCHITECTURES} --use_fast_math -O3")
     endif ()
 
-    set (SYS_CUDART_PATH "/usr/local/cuda")
+    set (SYS_CUDART_PATH "/usr/local/cuda-12.2")
     set (SYS_CUDA_DRIVER_PATH "/usr/lib/x86_64-linux-gnu")
 
     include_directories (

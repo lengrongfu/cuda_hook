@@ -91,8 +91,8 @@ if [ "$CUDA_VERSION" -eq 11 ]; then
     echo_cmd "ln -s libcublasLt.so.11 libcublasLt.so"
 
     # cufft
-    echo_cmd "ln -s libcuda_hook.so libcufft.so.10"
-    echo_cmd "ln -s libcufft.so.10 libcufft.so"
+    echo_cmd "ln -s libcuda_hook.so libcufft.so.11"
+    echo_cmd "ln -s libcufft.so.11 libcufft.so"
 
     # nvtx
     echo_cmd "ln -s libcuda_hook.so libnvToolsExt.so.1"
@@ -140,28 +140,28 @@ elif [ "$CUDA_VERSION" -eq 12 ]; then
     echo "========== create soft link =========="
 
     # cuda
-    echo_cmd "ln -s libcuda_hook.so libcuda.so.1"
-    echo_cmd "ln -s libcuda.so.1 libcuda.so"
+#    echo_cmd "ln -s libcuda_hook.so libcuda.so.1"
+#    echo_cmd "ln -s libcuda.so.1 libcuda.so"
 
     # nvml
-    echo_cmd "ln -s libcuda_hook.so libnvidia-ml.so.1"
-    echo_cmd "ln -s libnvidia-ml.so.1 libnvidia-ml.so"
+#    echo_cmd "ln -s libcuda_hook.so libnvidia-ml.so.1"
+#    echo_cmd "ln -s libnvidia-ml.so.1 libnvidia-ml.so"
 
     # cudart
-    echo_cmd "ln -s libcuda_hook.so libcudart.so.12.0"
-    echo_cmd "ln -s libcudart.so.12.0 libcudart.so"
+#    echo_cmd "ln -s libcuda_hook.so libcudart.so.12.0"
+#    echo_cmd "ln -s libcudart.so.12.0 libcudart.so"
 
     # cudnn
-    echo_cmd "ln -s libcuda_hook.so libcudnn.so.8"
-    echo_cmd "ln -s libcudnn.so.8 libcudnn.so"
+#    echo_cmd "ln -s libcuda_hook.so libcudnn.so.8"
+#    echo_cmd "ln -s libcudnn.so.8 libcudnn.so"
 
     # cublas
     echo_cmd "ln -s libcuda_hook.so libcublas.so.12"
     echo_cmd "ln -s libcublas.so.12 libcublas.so"
 
     # cublasLt
-    echo_cmd "ln -s libcuda_hook.so libcublasLt.so.12"
-    echo_cmd "ln -s libcublasLt.so.12 libcublasLt.so"
+#    echo_cmd "ln -s libcuda_hook.so libcublasLt.so.12"
+#    echo_cmd "ln -s libcublasLt.so.12 libcublasLt.so"
 
     # cufft
     echo_cmd "ln -s libcuda_hook.so libcufft.so.10"
@@ -184,8 +184,8 @@ elif [ "$CUDA_VERSION" -eq 12 ]; then
     echo_cmd "ln -s libcusparse.so.12 libcusparse.so"
 
     # cusolver
-    echo_cmd "ln -s libcuda_hook.so libcusolver.so.12"
-    echo_cmd "ln -s libcusolver.so.12 libcusolver.so"
+    echo_cmd "ln -s libcuda_hook.so libcusolver.so.11"
+    echo_cmd "ln -s libcusolver.so.11 libcusolver.so"
 
     # nvjpeg
     echo_cmd "ln -s libcuda_hook.so libnvjpeg.so.12"
